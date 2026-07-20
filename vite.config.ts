@@ -6,6 +6,9 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   base: '/my-new-app/',
+  build: {
+    outDir: 'docs', // вместо dist
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
