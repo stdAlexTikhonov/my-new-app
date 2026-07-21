@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import styles from './App.module.css'
+import styles from './App.module.scss'
 
 export const App = () => {
   const [count, setCount] = useState(0)
 
   return (
-      <section className={styles.center}>
+      <div className={styles.center}>
         <button
           type="button"
           className={styles.counter}
@@ -13,7 +13,7 @@ export const App = () => {
         >
           Count is {count}
         </button>
-      </section>
+      </div>
 
       
   )
