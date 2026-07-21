@@ -1,3 +1,17 @@
+// App.module.scss
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Растягиваем на всю высоту экрана */
+}
+
+.main {
+  flex: 1; /* Занимает всё свободное пространство */
+  display: flex;
+  flex-direction: column;
+}
+
+// Ваши существующие стили
 .counter {
   font-size: 16px;
   padding: 5px 10px;
