@@ -1,7 +1,9 @@
 import { GridIcon } from './GridIcon';
+import { useTheme } from '@/context';
 import styles from './Header.module.scss';
 
 export const Header = () => {
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <header className={styles.header}>
@@ -12,7 +14,7 @@ export const Header = () => {
               size={35} 
               gap={5} 
               radius={15}
-              colors={['var(--accent)','var(--accent-border)', 'var(--text)']}
+              colors={['var(--accent)', 'var(--accent-border)', 'var(--text)']}
               background="transparent"
             />
           </span>
@@ -23,8 +25,12 @@ export const Header = () => {
           <a href="#" className={styles.navLink}>Проекты</a>
           <a href="#" className={styles.navLink}>Блог</a>
         </nav>
-        <button className={styles.themeToggle} aria-label="Переключить тему">
-          🌓
+        <button 
+          className={styles.themeToggle} 
+          onClick={toggleTheme}
+          aria-label="Переключить тему"
+        >
+          {theme === 'light' ? '🌙' : '☀️'}
         </button>
       </div>
     </header>
