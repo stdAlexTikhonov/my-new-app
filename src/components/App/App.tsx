@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import { Footer } from '@/components/Footer'; // Импортируем футер
+import { Header, Footer } from '@/components';
 import styles from './App.module.scss';
 
 export const App = () => {
   const [count, setCount] = useState(0);
 
   return (
-    <div className={styles.app}>
+    <div id="root">
+      <Header />
       <main className={styles.main}>
         <div className={styles.center}>
           <button
@@ -18,7 +19,7 @@ export const App = () => {
           </button>
         </div>
       </main>
-      <Footer /> {/* Добавляем футер */}
+      <Footer />
     </div>
   );
 };
