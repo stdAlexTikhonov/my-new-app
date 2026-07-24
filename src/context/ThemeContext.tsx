@@ -49,6 +49,32 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
+  // В любом компоненте или хуке
+    useEffect(() => {
+    // Обработчик изменения системной темы
+    const handleThemeChange = (e: MediaQueryListEvent) => {
+        const newTheme = e.matches ? 'dark' : 'light';
+        
+        // Применяем новую тему
+        document.documentElement.classList.remove('light-theme', 'dark-theme');
+        document.documentElement.classList.add(`${newTheme}-theme`);
+
+        localStorage.setItem('theme', theme);
+        setTheme(newTheme);
+    };
+
+    // Создаём mediaQuery
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Добавляем слушатель
+    mediaQuery.addEventListener('change', handleThemeChange);
+    
+    // Очистка
+    return () => {
+        mediaQuery.removeEventListener('change', handleThemeChange);
+    };
+    }, []);
+
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
