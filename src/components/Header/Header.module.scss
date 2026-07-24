@@ -102,10 +102,10 @@
 }
 
 .themeToggle {
-  background: var(--accent-bg);
-  border: 1px solid var(--border);
+  border: none;
+  background: transparent;
   border-radius: 8px;
-  padding: 8px 12px;
+  padding: 5px 8px;
   font-size: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
