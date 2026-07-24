@@ -30,7 +30,7 @@ export const Header = () => {
           onClick={toggleTheme}
           aria-label="Переключить тему"
         >
-          {theme === 'light' ? '🌙' : '☀️'}
+          <span>{theme === 'light' ? '🌙' : '☀️'}</span>
         </button>
       </div>
     </header>
