@@ -1,5 +1,5 @@
 .burger {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 5px;
   background: none;
@@ -18,6 +18,12 @@
     outline-offset: 2px;
     border-radius: 4px;
   }
+
+  @media (max-width: 768px) {
+    display: flex; // Показываем на мобильных
+  }
+
+
 }
 
 .line {

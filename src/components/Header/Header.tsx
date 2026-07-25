@@ -1,6 +1,7 @@
 import { GridIcon } from './GridIcon';
 import { useTheme } from '@/context';
 import styles from './Header.module.scss';
+import { BurgerIcon } from '@/components';
 
 export const Header = () => {
   const { theme, toggleTheme } = useTheme();
@@ -8,6 +9,7 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
+        <BurgerIcon isOpen={false} />
         <div className={styles.logo}>
           <span className={styles.logoIcon}>
             <GridIcon 
