@@ -56,10 +56,6 @@ export const Header = () => {
             <span className={styles.menuIcon}>📝</span>
             Блог
           </a>
-          <a href="#" className={styles.menuLink} onClick={closeMenu}>
-            <span className={styles.menuIcon}>📞</span>
-            Контакты
-          </a>
         </nav>
 
         <div className={styles.menuFooter}>
