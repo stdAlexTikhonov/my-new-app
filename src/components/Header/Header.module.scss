@@ -142,3 +142,17 @@
     display: none;
   }
 }
+
+.menu {
+  transform: translateX(-150%);
+  transition: all 0.5s;
+  width: 100vw;
+  position: absolute;
+  top: 70px;
+  height: calc(100vh - 70px);
+  background: var(--bg);
+}
+
+.opened {
+  transform: translateX(0);
+}

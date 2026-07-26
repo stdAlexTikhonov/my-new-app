@@ -2,14 +2,17 @@ import { GridIcon } from './GridIcon';
 import { useTheme } from '@/context';
 import styles from './Header.module.scss';
 import { BurgerIcon } from '@/components';
+import { useState } from 'react';
+import clsx from 'clsx';
 
 export const Header = () => {
   const { theme, toggleTheme } = useTheme();
+  const [open, setOpen] = useState(false);
 
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <BurgerIcon isOpen={false} />
+        <BurgerIcon isOpen={open} onClick={() => setOpen(prev => !prev)} />
         <div className={styles.logo}>
           <span className={styles.logoIcon}>
             <GridIcon 
@@ -35,6 +38,7 @@ export const Header = () => {
           <span>{theme === 'light' ? '🌙' : '☀️'}</span>
         </button>
       </div>
+      <div className={clsx(styles.menu, open && styles.opened)}>block</div>
     </header>
   );
 };
