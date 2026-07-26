@@ -76,6 +76,39 @@ export const Header = () => {
               {theme === 'light' ? 'Тёмная тема' : 'Светлая тема'}
             </span>
           </button>
+          <button 
+            className={styles.menuThemeToggle}
+            onClick={() => {
+              closeMenu();
+            }}
+            aria-label="Переключить тему"
+          >
+            <span className={styles.menuThemeLabel}>
+              Контакты
+            </span>
+          </button>
+          <button 
+            className={styles.menuThemeToggle}
+            onClick={() => {
+              closeMenu();
+            }}
+            aria-label="Переключить тему"
+          >
+            <span className={styles.menuThemeLabel}>
+              Github
+            </span>
+          </button>
+          <button 
+            className={styles.menuThemeToggle}
+            onClick={() => {
+              closeMenu();
+            }}
+            aria-label="Переключить тему"
+          >
+            <span className={styles.menuThemeLabel}>
+              Политика конфиденциальности
+            </span>
+          </button>
         </div>
       </div>
     </header>
