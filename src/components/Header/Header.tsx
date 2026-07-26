@@ -9,6 +9,8 @@ export const Header = () => {
   const { theme, toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
 
+  const closeMenu = () => setOpen(false);
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -38,7 +40,44 @@ export const Header = () => {
           <span>{theme === 'light' ? '🌙' : '☀️'}</span>
         </button>
       </div>
-      <div className={clsx(styles.menu, open && styles.opened)}>block</div>
+      <div className={clsx(styles.menu, open && styles.opened)}>
+        
+
+        <nav className={styles.menuNav}>
+          <a href="#" className={styles.menuLink} onClick={closeMenu}>
+            <span className={styles.menuIcon}>🏠</span>
+            Главная
+          </a>
+          <a href="#" className={styles.menuLink} onClick={closeMenu}>
+            <span className={styles.menuIcon}>📁</span>
+            Проекты
+          </a>
+          <a href="#" className={styles.menuLink} onClick={closeMenu}>
+            <span className={styles.menuIcon}>📝</span>
+            Блог
+          </a>
+          <a href="#" className={styles.menuLink} onClick={closeMenu}>
+            <span className={styles.menuIcon}>📞</span>
+            Контакты
+          </a>
+        </nav>
+
+        <div className={styles.menuFooter}>
+          <button 
+            className={styles.menuThemeToggle}
+            onClick={() => {
+              toggleTheme();
+              closeMenu();
+            }}
+            aria-label="Переключить тему"
+          >
+            <span>{theme === 'light' ? '🌙' : '☀️'}</span>
+            <span className={styles.menuThemeLabel}>
+              {theme === 'light' ? 'Тёмная тема' : 'Светлая тема'}
+            </span>
+          </button>
+        </div>
+      </div>
     </header>
   );
 };
