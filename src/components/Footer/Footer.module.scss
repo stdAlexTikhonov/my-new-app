@@ -37,6 +37,11 @@
 
   @media (max-width: 768px) {
     gap: 16px;
+  }
+}
+
+.text {
+  @media (max-width: 768px) {
     display: none;
   }
 }
@@ -49,6 +54,9 @@
   letter-spacing: 0.18px;
   transition: color 0.3s ease;
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 
   &::after {
     content: '';
