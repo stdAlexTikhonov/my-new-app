@@ -1,8 +1,6 @@
 // Footer.tsx
 import styles from './Footer.module.scss';
-import { PolicyIcon } from './PolicyIcon';
-import { ContactsIcon } from './ContactsIcon';
-import { GithubIcon } from './GithubIcon';
+import { PolicyIcon, ContactsIcon, GithubIcon } from './icons';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();

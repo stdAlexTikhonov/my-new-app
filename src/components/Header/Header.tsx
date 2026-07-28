@@ -1,15 +1,12 @@
 import { GridIcon } from './GridIcon';
 import { useTheme } from '@/context';
 import styles from './Header.module.scss';
-import { BurgerIcon } from '@/components';
+import { BurgerIcon, MobileMenu } from '@/components';
 import { useState } from 'react';
-import clsx from 'clsx';
 
 export const Header = () => {
   const { theme, toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
-
-  const closeMenu = () => setOpen(false);
 
   return (
     <header className={styles.header}>
@@ -40,40 +37,7 @@ export const Header = () => {
           <span>{theme === 'light' ? '🌙' : '☀️'}</span>
         </button>
       </div>
-      <div className={clsx(styles.menu, open && styles.opened)}>
-        
-
-        <nav className={styles.menuNav}>
-          <a href="#" className={styles.menuLink} onClick={closeMenu}>
-            <span className={styles.menuIcon}>🏠</span>
-            Главная
-          </a>
-          <a href="#" className={styles.menuLink} onClick={closeMenu}>
-            <span className={styles.menuIcon}>📁</span>
-            Проекты
-          </a>
-          <a href="#" className={styles.menuLink} onClick={closeMenu}>
-            <span className={styles.menuIcon}>📝</span>
-            Блог
-          </a>
-        </nav>
-
-        <div className={styles.menuFooter}>
-          <button 
-            className={styles.menuThemeToggle}
-            onClick={() => {
-              toggleTheme();
-              closeMenu();
-            }}
-            aria-label="Переключить тему"
-          >
-            <span>{theme === 'light' ? '🌙' : '☀️'}</span>
-            <span className={styles.menuThemeLabel}>
-              {theme === 'light' ? 'Тёмная тема' : 'Светлая тема'}
-            </span>
-          </button>
-        </div>
-      </div>
+      <MobileMenu open={open} setOpen={setOpen} />
     </header>
   );
 };
