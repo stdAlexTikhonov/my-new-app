@@ -1,7 +1,6 @@
-import { GridIcon } from './GridIcon';
 import { useTheme } from '@/context';
 import styles from './Header.module.scss';
-import { BurgerIcon, MobileMenu } from '@/components';
+import { BurgerIcon, MobileMenu, GridIcon } from '@/components';
 import { useState } from 'react';
 
 export const Header = () => {
