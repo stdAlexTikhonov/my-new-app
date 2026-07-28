@@ -17,7 +17,6 @@ export const Header = () => {
               size={35} 
               gap={5} 
               radius={15}
-              colors={['var(--accent)', 'var(--accent-border)', 'var(--text)']}
               background="transparent"
             />
           </span>

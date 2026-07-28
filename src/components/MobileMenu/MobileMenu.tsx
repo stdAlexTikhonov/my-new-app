@@ -1,6 +1,7 @@
 import { useTheme } from '@/context';
 import styles from './MobileMenu.module.scss';
 import clsx from 'clsx';
+import { GridIcon } from '../GridIcon';
 
 interface Props {
     open: boolean;
@@ -16,15 +17,15 @@ export const MobileMenu = ({ open, setOpen}: Props) => {
     <div className={clsx(styles.menu, open && styles.opened)}>
         <nav className={styles.menuNav}>
             <a href="#" className={styles.menuLink} onClick={closeMenu}>
-            <span className={styles.menuIcon}>🏠</span>
+            <span className={styles.menuIcon}><GridIcon hiddenCells={[0, 2, 7]} size={24} radius={15} /></span>
             Главная
             </a>
             <a href="#" className={styles.menuLink} onClick={closeMenu}>
-            <span className={styles.menuIcon}>📁</span>
+            <span className={styles.menuIcon}><GridIcon hiddenCells={[1,2]} size={24} radius={15} /></span>
             Проекты
             </a>
             <a href="#" className={styles.menuLink} onClick={closeMenu}>
-            <span className={styles.menuIcon}>📝</span>
+            <span className={styles.menuIcon}><GridIcon hiddenCells={[2,3,5,7]} size={24} radius={15} /></span>
             Блог
             </a>
         </nav>
