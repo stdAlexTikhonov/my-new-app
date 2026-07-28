@@ -1,0 +1,54 @@
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 101;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 768px) {
+    display: flex; // Показываем на мобильных
+  }
+
+
+}
+
+.line {
+  display: block;
+  width: 25px;
+  height: 2.5px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+
+  .active & {
+    background: var(--text-h);
+  }
+
+  .active &:nth-child(1) {
+    transform: rotate(45deg) translate(5.5px, 5.5px);
+  }
+
+  .active &:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .active &:nth-child(3) {
+    transform: rotate(-45deg) translate(5.5px, -5.5px);
+  }
+}

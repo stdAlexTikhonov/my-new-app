@@ -1,7 +1,6 @@
 .header {
   width: 100%;
   padding: 16px 0;
-  border-bottom: 1px solid var(--border);
   background: var(--bg);
   position: sticky;
   top: 0;
@@ -18,6 +17,10 @@
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  @media (max-width: 768px) {
+    gap: 20px;
+    justify-content: flex-start;
+  }
 }
 
 .logo {
@@ -47,10 +50,12 @@
 
   @media (max-width: 768px) {
     gap: 20px;
+    display: none;
   }
 
   @media (max-width: 480px) {
     gap: 12px;
+    display: none;
   }
 }
 
@@ -102,6 +107,7 @@
 }
 
 .themeToggle {
+  display: block;
   border: none;
   background: transparent;
   border-radius: 8px;
@@ -129,5 +135,9 @@
 
   &:active span {
     transform: rotate(360deg);
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 }

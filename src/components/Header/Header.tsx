@@ -1,13 +1,17 @@
 import { GridIcon } from './GridIcon';
 import { useTheme } from '@/context';
 import styles from './Header.module.scss';
+import { BurgerIcon, MobileMenu } from '@/components';
+import { useState } from 'react';
 
 export const Header = () => {
   const { theme, toggleTheme } = useTheme();
+  const [open, setOpen] = useState(false);
 
   return (
     <header className={styles.header}>
       <div className={styles.container}>
+        <BurgerIcon isOpen={open} onClick={() => setOpen(prev => !prev)} />
         <div className={styles.logo}>
           <span className={styles.logoIcon}>
             <GridIcon 
@@ -33,6 +37,7 @@ export const Header = () => {
           <span>{theme === 'light' ? '🌙' : '☀️'}</span>
         </button>
       </div>
+      <MobileMenu open={open} setOpen={setOpen} />
     </header>
   );
 };
