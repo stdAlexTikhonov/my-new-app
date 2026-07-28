@@ -6,6 +6,7 @@ export interface GridIconProps {
   background?: string;
   gap?: number;
   radius?: number;
+  hiddenCells?: number[]; // Массив индексов ячеек, которые нужно скрыть
 }
 
 const cell = 28;
@@ -14,10 +15,11 @@ const rows = 3;
 
 export const GridIcon = ({
   size = 120,
-  colors = ["#FFD21F", "#F59E0B", "#F97316"],
+  colors= ['var(--accent)', 'var(--accent-border)', 'var(--text)'],
   background = "transparent",
   gap = 4,
   radius = 2,
+  hiddenCells = [], // По умолчанию все ячейки видны
 }: GridIconProps) => {
   const [c1, c2, c3] = colors;
 
@@ -28,13 +30,16 @@ export const GridIcon = ({
   const maskId = React.useId();
   const clipId = React.useId();
 
-  const positions: { x: number; y: number }[] = [];
+  const positions: { x: number; y: number; index: number }[] = [];
+  let index = 0;
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
       positions.push({
         x: col * (cell + gap),
         y: row * (cell + gap),
+        index,
       });
+      index++;
     }
   }
 
@@ -63,14 +68,14 @@ export const GridIcon = ({
         {/* Маска из ячеек */}
         <mask id={maskId}>
           <rect width={width} height={height} fill="black" />
-          {positions.map((p, i) => (
+          {positions.map((p) => (
             <rect
-              key={i}
+              key={p.index}
               x={p.x}
               y={p.y}
               width={cell}
               height={cell}
-              fill="white"
+              fill={hiddenCells.includes(p.index) ? "black" : "white"}
             />
           ))}
         </mask>

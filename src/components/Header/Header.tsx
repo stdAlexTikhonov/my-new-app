@@ -1,7 +1,6 @@
-import { GridIcon } from './GridIcon';
 import { useTheme } from '@/context';
 import styles from './Header.module.scss';
-import { BurgerIcon, MobileMenu } from '@/components';
+import { BurgerIcon, MobileMenu, GridIcon } from '@/components';
 import { useState } from 'react';
 
 export const Header = () => {
@@ -18,7 +17,6 @@ export const Header = () => {
               size={35} 
               gap={5} 
               radius={15}
-              colors={['var(--accent)', 'var(--accent-border)', 'var(--text)']}
               background="transparent"
             />
           </span>
