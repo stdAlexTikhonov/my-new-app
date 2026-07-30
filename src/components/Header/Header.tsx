@@ -23,9 +23,18 @@ export const Header = () => {
           <span className={styles.logoText}>Table Cafe</span>
         </div>
         <nav className={styles.nav}>
-          <a href="#" className={styles.navLink}>Главная</a>
-          <a href="#" className={styles.navLink}>Проекты</a>
-          <a href="#" className={styles.navLink}>Блог</a>
+          <a href="#" className={styles.navLink}>
+            <GridIcon hiddenCells={[0, 2, 7]} size={24} radius={15} />
+            Главная
+          </a>
+          <a href="#" className={styles.navLink}>
+            <GridIcon hiddenCells={[1,2]} size={24} radius={15} />
+            Проекты
+          </a>
+          <a href="#" className={styles.navLink}>
+            <GridIcon hiddenCells={[2,3,5,7]} size={24} radius={15} />
+            Блог
+          </a>
         </nav>
         <button 
           className={styles.themeToggle} 
