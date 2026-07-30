@@ -34,7 +34,6 @@ export const MobileMenu = ({ open, setOpen}: Props) => {
             className={styles.menuThemeToggle}
             onClick={() => {
                 toggleTheme();
-                closeMenu();
             }}
             aria-label="Переключить тему"
             >
