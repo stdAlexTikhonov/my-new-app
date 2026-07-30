@@ -66,6 +66,8 @@
   letter-spacing: 0.18px;
   transition: color 0.3s ease;
   position: relative;
+  display: flex;
+  gap: 12px;
 
   &::after {
     content: '';
@@ -91,19 +93,8 @@
     outline-offset: 2px;
     border-radius: 2px;
   }
-
-  @media (max-width: 480px) {
-    font-size: 13px;
-  }
 }
 
-
-// Для тёмной темы (если используете CSS-переменные)
-@media (prefers-color-scheme: dark) {
-  .header {
-    background: var(--bg);
-  }
-}
 
 .themeToggle {
   display: block;
