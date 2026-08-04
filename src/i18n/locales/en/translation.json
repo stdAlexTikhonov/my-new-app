@@ -1,3 +1,12 @@
 {
-  "count": "Count is {{num}}!"
+  "count": "Count is {{num}}!",
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog"
+  },
+  "aria": {
+    "changeLanguage": "Change language",
+    "toggleTheme": "Toggle theme"
+  }
 }

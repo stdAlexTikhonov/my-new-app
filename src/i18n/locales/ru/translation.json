@@ -1,3 +1,12 @@
 {
-  "count": "Всего нажатий {{num}}!"
+  "count": "{{num}} нажатий!",
+  "nav": {
+    "home": "Домой",
+    "projects": "Проекты",
+    "blog": "Блог"
+  },
+  "aria": {
+    "changeLanguage": "Сменить язык",
+    "toggleTheme": "Сменить тему"
+  }
 }
