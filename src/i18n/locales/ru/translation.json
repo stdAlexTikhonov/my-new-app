@@ -8,5 +8,10 @@
   "aria": {
     "changeLanguage": "Сменить язык",
     "toggleTheme": "Сменить тему"
+  },
+  "footer": {
+    "rights": "{{currentYear}} Все права защищены",
+    "contacts": "Контакты",
+    "privacy": "Политика конфиденциальности"
   }
 }
