@@ -13,5 +13,12 @@
     "rights": "{{currentYear}} All rights reserved",
     "contacts": "Contacts",
     "privacy": "Privacy policy"
+  },
+  "mobilemenu": {
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog",
+    "dark": "Dark theme",
+    "light": "Light theme"
   }
 }

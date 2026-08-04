@@ -2,6 +2,7 @@ import { useTheme } from '@/context';
 import styles from './MobileMenu.module.scss';
 import clsx from 'clsx';
 import { GridIcon } from '../GridIcon';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     open: boolean;
@@ -10,6 +11,7 @@ interface Props {
 
 export const MobileMenu = ({ open, setOpen}: Props) => {
   const { theme, toggleTheme } = useTheme();
+  const { t } = useTranslation();
 
   const closeMenu = () => setOpen(false);
 
@@ -18,29 +20,29 @@ export const MobileMenu = ({ open, setOpen}: Props) => {
         <nav className={styles.menuNav}>
             <a href="#" className={styles.menuLink} onClick={closeMenu}>
             <span className={styles.menuIcon}><GridIcon hiddenCells={[0, 2, 7]} size={24} radius={15} /></span>
-            Главная
+            {t('mobilemenu.home')}
             </a>
             <a href="#" className={styles.menuLink} onClick={closeMenu}>
             <span className={styles.menuIcon}><GridIcon hiddenCells={[1,2]} size={24} radius={15} /></span>
-            Проекты
+            {t('mobilemenu.projects')}
             </a>
             <a href="#" className={styles.menuLink} onClick={closeMenu}>
             <span className={styles.menuIcon}><GridIcon hiddenCells={[2,3,5,7]} size={24} radius={15} /></span>
-            Блог
+            {t('mobilemenu.blog')}
             </a>
         </nav>
         <div className={styles.menuFooter}>
             <button 
-            className={styles.menuThemeToggle}
-            onClick={() => {
-                toggleTheme();
-            }}
-            aria-label="Переключить тему"
-            >
-            <span>{theme === 'light' ? '🌙' : '☀️'}</span>
-            <span className={styles.menuThemeLabel}>
-                {theme === 'light' ? 'Тёмная тема' : 'Светлая тема'}
-            </span>
+                className={styles.menuThemeToggle}
+                onClick={() => {
+                    toggleTheme();
+                }}
+                aria-label={t('aria.toggleTheme')}
+                >
+                <span>{theme === 'light' ? '🌙' : '☀️'}</span>
+                <span className={styles.menuThemeLabel}>
+                    {theme === 'light' ? t('mobilemenu.dark') : t('mobilemenu.light')}
+                </span>
             </button>
         </div>
     </div>
