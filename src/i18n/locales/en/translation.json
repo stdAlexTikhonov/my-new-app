@@ -1,0 +1,25 @@
+{
+  "count": "Count is {{num}}!",
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog"
+  },
+  "aria": {
+    "changeLanguage": "Change language",
+    "toggleTheme": "Toggle theme"
+  },
+  "footer": {
+    "rights": "{{currentYear}} All rights reserved",
+    "contacts": "Contacts",
+    "privacy": "Privacy policy"
+  },
+  "mobilemenu": {
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog",
+    "dark": "Dark theme",
+    "light": "Light theme",
+    "language": "English"
+  }
+}

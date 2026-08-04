@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { Header, Footer } from '@/components';
 import { ThemeProvider } from '@/context';
 import styles from './App.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export const App = () => {
   const [count, setCount] = useState(0);
+  const { t } = useTranslation();
 
   return (
     <ThemeProvider>
@@ -17,7 +19,7 @@ export const App = () => {
               className={styles.counter}
               onClick={() => setCount((count) => count + 1)}
             >
-              Count is {count}
+              {t('count', { num: count })}
             </button>
           </div>
         </main>

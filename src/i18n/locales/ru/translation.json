@@ -1,0 +1,25 @@
+{
+  "count": "{{num}} нажатий!",
+  "nav": {
+    "home": "Главная",
+    "projects": "Проекты",
+    "blog": "Блог"
+  },
+  "aria": {
+    "changeLanguage": "Сменить язык",
+    "toggleTheme": "Сменить тему"
+  },
+  "footer": {
+    "rights": "{{currentYear}} Все права защищены",
+    "contacts": "Контакты",
+    "privacy": "Политика конфиденциальности"
+  },
+  "mobilemenu": {
+    "home": "Главная",
+    "projects": "Проекты",
+    "blog": "Блог",
+    "dark": "Тёмная тема",
+    "light": "Светлая тема",
+    "language": "Русский"
+  }
+}
