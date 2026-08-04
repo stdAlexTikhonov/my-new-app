@@ -11,7 +11,16 @@ interface Props {
 
 export const MobileMenu = ({ open, setOpen}: Props) => {
   const { theme, toggleTheme } = useTheme();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng: string | undefined) => {
+    i18n.changeLanguage(lng);
+  };
+
+  const toggleLanguage = () => {
+    const nextLang = i18n.language === 'en' ? 'ru' : 'en';
+    changeLanguage(nextLang);
+  };
 
   const closeMenu = () => setOpen(false);
 
@@ -42,6 +51,17 @@ export const MobileMenu = ({ open, setOpen}: Props) => {
                 <span>{theme === 'light' ? '🌙' : '☀️'}</span>
                 <span className={styles.menuThemeLabel}>
                     {theme === 'light' ? t('mobilemenu.dark') : t('mobilemenu.light')}
+                </span>
+            </button>
+            <button 
+                className={styles.menuThemeToggle}
+                onClick={() => {
+                    toggleLanguage();
+                }}
+                aria-label={t('aria.changeLanguage')}
+                >
+                <span className={styles.menuThemeLabel}>
+                    {t('mobilemenu.language')}
                 </span>
             </button>
         </div>

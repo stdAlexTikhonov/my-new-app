@@ -56,7 +56,7 @@ export const Header = () => {
             aria-label={t('aria.changeLanguage')}
           >
             <span className={styles.langText}>
-              {i18n.language === 'en' ? 'RU' : 'EN'}
+              {i18n.language === 'en' ? 'EN' : 'RU'}
             </span>
           </button>
 
