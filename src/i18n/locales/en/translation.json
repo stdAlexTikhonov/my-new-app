@@ -12,7 +12,7 @@
   "footer": {
     "rights": "{{currentYear}} All rights reserved",
     "contacts": "Contacts",
-    "privacy": "Privacy policy"
+    "privacy": "Policy"
   },
   "mobilemenu": {
     "home": "Home",
@@ -20,6 +20,6 @@
     "blog": "Blog",
     "dark": "Dark theme",
     "light": "Light theme",
-    "language": "English"
+    "language": "Русский"
   }
 }
