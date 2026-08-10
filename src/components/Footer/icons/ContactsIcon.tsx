@@ -1,3 +1,6 @@
 export const ContactsIcon = () => {
-    return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">  <path d="M13.6 11.3v1.8a1.2 1.2 0 0 1-1.3 1.2A11.8 11.8 0 0 1 7.1 12a11.6 11.6 0 0 1-3.1-3.1A11.8 11.8 0 0 1 1.7 3.7 1.2 1.2 0 0 1 2.9 2.4h1.8a1.2 1.2 0 0 1 1.2 1c.1.6.2 1.1.4 1.6a1.2 1.2 0 0 1-.3 1.3l-.9.9a8.5 8.5 0 0 0 3.7 3.7l.9-.9a1.2 1.2 0 0 1 1.3-.3c.5.2 1 .3 1.6.4a1.2 1.2 0 0 1 1 1.2Z"/> </svg>;
+    return <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+  <path d="M3 4l5 4 5-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+</svg>;
 }
