@@ -1,6 +1,6 @@
-import styles from './Footer.module.scss';
-import { PolicyIcon, ContactsIcon, GithubIcon } from './icons';
-import { useTranslation } from 'react-i18next';
+import styles from "./Footer.module.scss";
+import { ThemeIcon, ContactsIcon, GithubIcon } from "./icons";
+import { useTranslation } from "react-i18next";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,16 +10,16 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <p className={styles.copyright}>
-          &copy; {t('footer.rights', { currentYear })}
+          &copy; {t("footer.rights", { currentYear })}
         </p>
         <nav className={styles.links}>
           <a href="#" className={styles.link}>
-            <PolicyIcon />
-            <span className={styles.text}>{t('footer.privacy')}</span>
+            <ThemeIcon />
+            <span className={styles.text}>{t("footer.theme")}</span>
           </a>
           <a href="#" className={styles.link}>
             <ContactsIcon />
-            <span className={styles.text}>{t('footer.contacts')}</span>
+            <span className={styles.text}>{t("footer.contacts")}</span>
           </a>
           <a href="#" className={styles.link}>
             <GithubIcon />

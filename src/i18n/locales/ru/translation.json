@@ -12,7 +12,7 @@
   "footer": {
     "rights": "{{currentYear}} Все права защищены",
     "contacts": "Контакты",
-    "privacy": "Конфиденциальность"
+    "theme": "Тема"
   },
   "mobilemenu": {
     "home": "Главная",
