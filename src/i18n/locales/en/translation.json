@@ -12,7 +12,7 @@
   "footer": {
     "rights": "{{currentYear}} All rights reserved",
     "contacts": "Contacts",
-    "privacy": "Policy"
+    "theme": "Theme"
   },
   "mobilemenu": {
     "home": "Home",

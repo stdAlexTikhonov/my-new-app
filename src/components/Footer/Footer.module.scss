@@ -58,7 +58,7 @@
   gap: 5px;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -2px;
     left: 0;
@@ -70,7 +70,7 @@
 
   &:hover {
     color: var(--text-h);
-    
+
     &::after {
       width: 100%;
     }
