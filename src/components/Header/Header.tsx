@@ -3,6 +3,7 @@ import styles from "./Header.module.scss";
 import { BurgerIcon, MobileMenu, GridIcon } from "@/components";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router";
 
 export const Header = () => {
   const { theme, toggleTheme } = useTheme();
@@ -29,18 +30,18 @@ export const Header = () => {
           <span className={styles.logoText}>Table Cafe</span>
         </div>
         <nav className={styles.nav}>
-          <a href="#" className={styles.navLink}>
+          <Link to="" className={styles.navLink}>
             <GridIcon hiddenCells={[0, 2, 7]} size={24} radius={15} />
             {t("nav.home")}
-          </a>
-          <a href="#" className={styles.navLink}>
+          </Link>
+          <Link to="projects" className={styles.navLink}>
             <GridIcon hiddenCells={[1, 2]} size={24} radius={15} />
             {t("nav.projects")}
-          </a>
-          <a href="#" className={styles.navLink}>
+          </Link>
+          <Link to="blog" className={styles.navLink}>
             <GridIcon hiddenCells={[2, 3, 5, 7]} size={24} radius={15} />
             {t("nav.blog")}
-          </a>
+          </Link>
         </nav>
 
         <div className={styles.actions}>

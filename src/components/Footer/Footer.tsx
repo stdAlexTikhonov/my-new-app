@@ -1,6 +1,7 @@
 import styles from "./Footer.module.scss";
 import { ThemeIcon, ContactsIcon, GithubIcon } from "./icons";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -13,15 +14,19 @@ export const Footer = () => {
           &copy; {t("footer.rights", { currentYear })}
         </p>
         <nav className={styles.links}>
-          <a href="#" className={styles.link}>
+          <Link to="theme" className={styles.link}>
             <ThemeIcon />
             <span className={styles.text}>{t("footer.theme")}</span>
-          </a>
-          <a href="#" className={styles.link}>
+          </Link>
+          <Link to="contacts" className={styles.link}>
             <ContactsIcon />
             <span className={styles.text}>{t("footer.contacts")}</span>
-          </a>
-          <a href="#" className={styles.link}>
+          </Link>
+          <a
+            href="https://github.com/stdAlexTikhonov/my-new-app"
+            target="_blank"
+            className={styles.link}
+          >
             <GithubIcon />
             <span className={styles.text}>GitHub</span>
           </a>
