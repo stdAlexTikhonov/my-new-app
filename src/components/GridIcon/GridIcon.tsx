@@ -15,7 +15,7 @@ const rows = 3;
 
 export const GridIcon = ({
   size = 120,
-  colors= ['var(--accent)', 'var(--accent-border)', 'var(--text)'],
+  colors = ["var(--accent)", "var(--accent-border)", "var(--text)"],
   background = "transparent",
   gap = 4,
   radius = 2,
@@ -53,13 +53,7 @@ export const GridIcon = ({
       aria-label="Grid icon"
     >
       <defs>
-        <linearGradient 
-          id={gradientId} 
-          x1="0%" 
-          y1="0%"     
-          x2="100%" 
-          y2="100%"
-        >
+        <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor={c1} />
           <stop offset="50%" stopColor={c2} />
           <stop offset="100%" stopColor={c3} />
@@ -90,9 +84,9 @@ export const GridIcon = ({
 
       {/* Градиент, обрезанный маской из ячеек */}
       <g clipPath={`url(#${clipId})`}>
-        <rect 
-          width={width} 
-          height={height} 
+        <rect
+          width={width}
+          height={height}
           fill={`url(#${gradientId})`}
           mask={`url(#${maskId})`}
         />
