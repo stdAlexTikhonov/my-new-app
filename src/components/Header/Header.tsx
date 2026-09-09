@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 
 export const Header = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { isDark, toggleTheme } = useTheme();
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
 
@@ -108,7 +108,7 @@ export const Header = () => {
             onClick={toggleTheme}
             aria-label={t("aria.toggleTheme")}
           >
-            <span>{theme === "light" ? "🌙" : "☀️"}</span>
+            <span>{isDark ? "☀️" : "🌙"}</span>
           </button>
         </div>
       </div>

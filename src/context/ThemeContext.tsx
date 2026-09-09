@@ -1,18 +1,36 @@
-import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
-
-type Theme = 'light' | 'dark';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
+import { applyThemeToRoot, isDarkTheme } from "@/theme/dom";
+import {
+  defaultThemeName,
+  themeNames,
+  themes,
+  type ThemeName,
+} from "@/theme/themes";
+import { getStoredThemeName, setStoredThemeName } from "@/theme/storage";
+import type { ThemeColors } from "@/theme/types";
 
 interface ThemeContextType {
-  theme: Theme;
+  themeName: ThemeName;
+  theme: ThemeColors;
+  themeNames: ThemeName[];
+  setTheme: (themeName: ThemeName) => void;
+  isDark: boolean;
   toggleTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export const useTheme = () => {
+export const useTheme = (): ThemeContextType => {
   const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
 };
@@ -21,67 +39,46 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
-export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  // Проверяем системную тему или сохранённую
-  const getInitialTheme = (): Theme => {
-    const savedTheme = localStorage.getItem('theme') as Theme | null;
-    if (savedTheme) return savedTheme;
-    
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return prefersDark ? 'dark' : 'light';
-  };
+function getInitialThemeName(): ThemeName {
+  return getStoredThemeName() ?? defaultThemeName;
+}
 
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
+  const [themeName, setThemeName] = useState<ThemeName>(getInitialThemeName);
+
+  const theme = useMemo(() => themes[themeName], [themeName]);
+  const isDark = useMemo(() => isDarkTheme(theme), [theme]);
 
   useEffect(() => {
-    // Применяем тему к корневому элементу
-    const root = document.documentElement;
-    
-    if (theme === 'dark') {
-      root.classList.add('dark-theme');
-      root.classList.remove('light-theme');
-    } else {
-      root.classList.add('light-theme');
-      root.classList.remove('dark-theme');
-    }
-    
-    // Сохраняем выбор
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    applyThemeToRoot(themeName, theme);
+    setStoredThemeName(themeName);
+  }, [themeName, theme]);
 
-  // В любом компоненте или хуке
-    useEffect(() => {
-    // Обработчик изменения системной темы
-    const handleThemeChange = (e: MediaQueryListEvent) => {
-        const newTheme = e.matches ? 'dark' : 'light';
-        
-        // Применяем новую тему
-        document.documentElement.classList.remove('light-theme', 'dark-theme');
-        document.documentElement.classList.add(`${newTheme}-theme`);
-
-        localStorage.setItem('theme', theme);
-        setTheme(newTheme);
-    };
-
-    // Создаём mediaQuery
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    // Добавляем слушатель
-    mediaQuery.addEventListener('change', handleThemeChange);
-    
-    // Очистка
-    return () => {
-        mediaQuery.removeEventListener('change', handleThemeChange);
-    };
-    }, []);
+  const setTheme = (nextThemeName: ThemeName) => {
+    setThemeName(nextThemeName);
+  };
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    setThemeName((prevThemeName) =>
+      prevThemeName === "serika_dark" ? "sewing_tin_light" : "serika_dark",
+    );
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{
+        themeName,
+        theme,
+        themeNames,
+        setTheme,
+        isDark,
+        toggleTheme,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );
 };
+
+export type { ThemeName };
+export type { ThemeColors };

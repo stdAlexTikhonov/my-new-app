@@ -1,0 +1,108 @@
+import type { ThemeColors } from "./types";
+
+export const themes = {
+  serika_dark: {
+    bg: "#323437",
+    main: "#e2b714",
+    caret: "#e2b714",
+    sub: "#646669",
+    subAlt: "#2c2e31",
+    text: "#d1d0c5",
+    error: "#ca4754",
+    errorExtra: "#7e2a33",
+    colorfulError: "#ca4754",
+    colorfulErrorExtra: "#7e2a33",
+  },
+  serika: {
+    bg: "#e1b687",
+    main: "#323437",
+    caret: "#323437",
+    sub: "#b35d4e",
+    subAlt: "#d1a97a",
+    text: "#323437",
+    error: "#ca4754",
+    errorExtra: "#7e2a33",
+    colorfulError: "#ca4754",
+    colorfulErrorExtra: "#7e2a33",
+  },
+  dracula: {
+    bg: "#282a36",
+    main: "#f8f8f2",
+    caret: "#f8f8f2",
+    sub: "#6272a4",
+    subAlt: "#1e1f29",
+    text: "#f8f8f2",
+    error: "#ff5555",
+    errorExtra: "#f1fa8c",
+    colorfulError: "#ff5555",
+    colorfulErrorExtra: "#f1fa8c",
+  },
+  monokai: {
+    bg: "#272822",
+    main: "#f92672",
+    caret: "#f92672",
+    sub: "#75715e",
+    subAlt: "#221f22",
+    text: "#f8f8f2",
+    error: "#f92672",
+    errorExtra: "#fd971f",
+    colorfulError: "#f92672",
+    colorfulErrorExtra: "#fd971f",
+  },
+  rose_pine: {
+    bg: "#191724",
+    main: "#ebbcba",
+    caret: "#ebbcba",
+    sub: "#6e6a86",
+    subAlt: "#26233a",
+    text: "#e0def4",
+    error: "#eb6f92",
+    errorExtra: "#f6c177",
+    colorfulError: "#eb6f92",
+    colorfulErrorExtra: "#f6c177",
+  },
+  github: {
+    bg: "#ffffff",
+    main: "#4078c0",
+    caret: "#4078c0",
+    sub: "#999999",
+    subAlt: "#e6e6e6",
+    text: "#333333",
+    error: "#c23616",
+    errorExtra: "#c23616",
+    colorfulError: "#c23616",
+    colorfulErrorExtra: "#c23616",
+  },
+  gruvbox_dark: {
+    bg: "#282828",
+    main: "#fabd2f",
+    caret: "#fabd2f",
+    sub: "#665c54",
+    subAlt: "#1d2021",
+    text: "#ebdbb2",
+    error: "#fb4934",
+    errorExtra: "#cc241d",
+    colorfulError: "#fb4934",
+    colorfulErrorExtra: "#cc241d",
+  },
+  sewing_tin_light: {
+    bg: "#eae0d1",
+    main: "#4a6b8a",
+    caret: "#4a6b8a",
+    sub: "#8b7b6d",
+    subAlt: "#ddd3c5",
+    text: "#3a312c",
+    error: "#c97b63",
+    errorExtra: "#a65a42",
+    colorfulError: "#c97b63",
+    colorfulErrorExtra: "#a65a42",
+  },
+} as const satisfies Record<string, ThemeColors>;
+
+export type ThemeName = keyof typeof themes;
+
+export const themeNames = Object.keys(themes) as ThemeName[];
+
+export const defaultThemeName: ThemeName = "serika_dark";
+
+export const defaultTheme = themes[defaultThemeName];

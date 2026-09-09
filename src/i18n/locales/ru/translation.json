@@ -14,6 +14,10 @@
     "contacts": "Контакты",
     "theme": "Тема"
   },
+  "themePage": {
+    "searchPlaceholder": "Поиск тем",
+    "empty": "Темы не найдены"
+  },
   "mobilemenu": {
     "home": "Главная",
     "projects": "Проекты",

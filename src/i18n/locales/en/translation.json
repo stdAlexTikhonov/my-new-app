@@ -14,6 +14,10 @@
     "contacts": "Contacts",
     "theme": "Theme"
   },
+  "themePage": {
+    "searchPlaceholder": "Search themes",
+    "empty": "No theme found"
+  },
   "mobilemenu": {
     "home": "Home",
     "projects": "Projects",
