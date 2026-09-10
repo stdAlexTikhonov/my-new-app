@@ -21,9 +21,6 @@ export const ThemePage = () => {
           );
 
     return [...matchingThemeNames].sort((leftName, rightName) => {
-      if (leftName === themeName) return -1;
-      if (rightName === themeName) return 1;
-
       const leftIsDark = isDarkTheme(themes[leftName]);
       const rightIsDark = isDarkTheme(themes[rightName]);
 
@@ -33,7 +30,7 @@ export const ThemePage = () => {
 
       return leftName.localeCompare(rightName);
     });
-  }, [query, themeName, themeNames]);
+  }, [query, themeNames]);
 
   return (
     <main className={styles.page}>
