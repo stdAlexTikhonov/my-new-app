@@ -10,7 +10,7 @@ export const ThemePage = () => {
   const { themeName, themeNames, setTheme } = useTheme();
   const [query, setQuery] = useState("");
 
-  const filteredThemeNames = useMemo(() => {
+  const { lightThemeNames, darkThemeNames } = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
 
     const matchingThemeNames =
@@ -20,20 +20,26 @@ export const ThemePage = () => {
             name.replaceAll("_", " ").toLowerCase().includes(normalizedQuery),
           );
 
-    return [...matchingThemeNames].sort((leftName, rightName) => {
-      if (leftName === themeName) return -1;
-      if (rightName === themeName) return 1;
+    const sortedThemeNames = [...matchingThemeNames].sort(
+      (leftName, rightName) => leftName.localeCompare(rightName),
+    );
 
-      const leftIsDark = isDarkTheme(themes[leftName]);
-      const rightIsDark = isDarkTheme(themes[rightName]);
+    return sortedThemeNames.reduce(
+      (groups, name) => {
+        if (isDarkTheme(themes[name])) {
+          groups.darkThemeNames.push(name);
+        } else {
+          groups.lightThemeNames.push(name);
+        }
 
-      if (leftIsDark !== rightIsDark) {
-        return Number(leftIsDark) - Number(rightIsDark);
-      }
-
-      return leftName.localeCompare(rightName);
-    });
-  }, [query, themeName, themeNames]);
+        return groups;
+      },
+      {
+        lightThemeNames: [] as ThemeName[],
+        darkThemeNames: [] as ThemeName[],
+      },
+    );
+  }, [query, themeNames]);
 
   return (
     <main className={styles.page}>
@@ -63,47 +69,100 @@ export const ThemePage = () => {
           </svg>
         </span>
       </label>
+      <div className={styles.listWrapper}>
+        <div className={styles.list}>
+          {lightThemeNames.length === 0 && darkThemeNames.length === 0 ? (
+            <p className={styles.empty}>{t("themePage.empty")}</p>
+          ) : (
+            <>
+              {lightThemeNames.length > 0 ? (
+                <section className={styles.group}>
+                  <h2 className={styles.groupTitle}>{t("themePage.light")}</h2>
+                  <div className={styles.groupList}>
+                    {lightThemeNames.map((name) => {
+                      const theme = themes[name as ThemeName];
+                      const active = themeName === name;
 
-      <div className={styles.list}>
-        {filteredThemeNames.length === 0 ? (
-          <p className={styles.empty}>{t("themePage.empty")}</p>
-        ) : (
-          filteredThemeNames.map((name) => {
-            const theme = themes[name as ThemeName];
-            const active = themeName === name;
+                      return (
+                        <button
+                          key={name}
+                          type="button"
+                          onClick={() => setTheme(name)}
+                          className={`${styles.themeButton} ${active ? styles.active : ""}`}
+                        >
+                          <span className={styles.themeName}>
+                            {name.replaceAll("_", " ")}
+                          </span>
+                          <span className={styles.swatches}>
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.bg }}
+                            />
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.main }}
+                            />
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.sub }}
+                            />
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.text }}
+                            />
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+              ) : null}
 
-            return (
-              <button
-                key={name}
-                type="button"
-                onClick={() => setTheme(name)}
-                className={`${styles.themeButton} ${active ? styles.active : ""}`}
-              >
-                <span className={styles.themeName}>
-                  {name.replaceAll("_", " ")}
-                </span>
-                <span className={styles.swatches}>
-                  <span
-                    className={styles.swatch}
-                    style={{ background: theme.bg }}
-                  />
-                  <span
-                    className={styles.swatch}
-                    style={{ background: theme.main }}
-                  />
-                  <span
-                    className={styles.swatch}
-                    style={{ background: theme.sub }}
-                  />
-                  <span
-                    className={styles.swatch}
-                    style={{ background: theme.text }}
-                  />
-                </span>
-              </button>
-            );
-          })
-        )}
+              {darkThemeNames.length > 0 ? (
+                <section className={styles.group}>
+                  <h2 className={styles.groupTitle}>{t("themePage.dark")}</h2>
+                  <div className={styles.groupList}>
+                    {darkThemeNames.map((name) => {
+                      const theme = themes[name as ThemeName];
+                      const active = themeName === name;
+
+                      return (
+                        <button
+                          key={name}
+                          type="button"
+                          onClick={() => setTheme(name)}
+                          className={`${styles.themeButton} ${active ? styles.active : ""}`}
+                        >
+                          <span className={styles.themeName}>
+                            {name.replaceAll("_", " ")}
+                          </span>
+                          <span className={styles.swatches}>
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.bg }}
+                            />
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.main }}
+                            />
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.sub }}
+                            />
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.text }}
+                            />
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+              ) : null}
+            </>
+          )}
+        </div>
       </div>
     </main>
   );

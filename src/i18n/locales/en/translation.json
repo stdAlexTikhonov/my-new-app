@@ -16,7 +16,9 @@
   },
   "themePage": {
     "searchPlaceholder": "Search themes",
-    "empty": "No theme found"
+    "empty": "No theme found",
+    "light": "Light",
+    "dark": "Dark"
   },
   "mobilemenu": {
     "home": "Home",
