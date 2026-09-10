@@ -16,7 +16,9 @@
   },
   "themePage": {
     "searchPlaceholder": "Поиск тем",
-    "empty": "Темы не найдены"
+    "empty": "Темы не найдены",
+    "light": "Светлые",
+    "dark": "Тёмные"
   },
   "mobilemenu": {
     "home": "Главная",
