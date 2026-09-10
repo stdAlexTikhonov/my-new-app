@@ -69,99 +69,100 @@ export const ThemePage = () => {
           </svg>
         </span>
       </label>
+      <div className={styles.listWrapper}>
+        <div className={styles.list}>
+          {lightThemeNames.length === 0 && darkThemeNames.length === 0 ? (
+            <p className={styles.empty}>{t("themePage.empty")}</p>
+          ) : (
+            <>
+              {lightThemeNames.length > 0 ? (
+                <section className={styles.group}>
+                  <h2 className={styles.groupTitle}>{t("themePage.light")}</h2>
+                  <div className={styles.groupList}>
+                    {lightThemeNames.map((name) => {
+                      const theme = themes[name as ThemeName];
+                      const active = themeName === name;
 
-      <div className={styles.list}>
-        {lightThemeNames.length === 0 && darkThemeNames.length === 0 ? (
-          <p className={styles.empty}>{t("themePage.empty")}</p>
-        ) : (
-          <>
-            {lightThemeNames.length > 0 ? (
-              <section className={styles.group}>
-                <h2 className={styles.groupTitle}>{t("themePage.light")}</h2>
-                <div className={styles.groupList}>
-                  {lightThemeNames.map((name) => {
-                    const theme = themes[name as ThemeName];
-                    const active = themeName === name;
+                      return (
+                        <button
+                          key={name}
+                          type="button"
+                          onClick={() => setTheme(name)}
+                          className={`${styles.themeButton} ${active ? styles.active : ""}`}
+                        >
+                          <span className={styles.themeName}>
+                            {name.replaceAll("_", " ")}
+                          </span>
+                          <span className={styles.swatches}>
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.bg }}
+                            />
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.main }}
+                            />
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.sub }}
+                            />
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.text }}
+                            />
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+              ) : null}
 
-                    return (
-                      <button
-                        key={name}
-                        type="button"
-                        onClick={() => setTheme(name)}
-                        className={`${styles.themeButton} ${active ? styles.active : ""}`}
-                      >
-                        <span className={styles.themeName}>
-                          {name.replaceAll("_", " ")}
-                        </span>
-                        <span className={styles.swatches}>
-                          <span
-                            className={styles.swatch}
-                            style={{ background: theme.bg }}
-                          />
-                          <span
-                            className={styles.swatch}
-                            style={{ background: theme.main }}
-                          />
-                          <span
-                            className={styles.swatch}
-                            style={{ background: theme.sub }}
-                          />
-                          <span
-                            className={styles.swatch}
-                            style={{ background: theme.text }}
-                          />
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </section>
-            ) : null}
+              {darkThemeNames.length > 0 ? (
+                <section className={styles.group}>
+                  <h2 className={styles.groupTitle}>{t("themePage.dark")}</h2>
+                  <div className={styles.groupList}>
+                    {darkThemeNames.map((name) => {
+                      const theme = themes[name as ThemeName];
+                      const active = themeName === name;
 
-            {darkThemeNames.length > 0 ? (
-              <section className={styles.group}>
-                <h2 className={styles.groupTitle}>{t("themePage.dark")}</h2>
-                <div className={styles.groupList}>
-                  {darkThemeNames.map((name) => {
-                    const theme = themes[name as ThemeName];
-                    const active = themeName === name;
-
-                    return (
-                      <button
-                        key={name}
-                        type="button"
-                        onClick={() => setTheme(name)}
-                        className={`${styles.themeButton} ${active ? styles.active : ""}`}
-                      >
-                        <span className={styles.themeName}>
-                          {name.replaceAll("_", " ")}
-                        </span>
-                        <span className={styles.swatches}>
-                          <span
-                            className={styles.swatch}
-                            style={{ background: theme.bg }}
-                          />
-                          <span
-                            className={styles.swatch}
-                            style={{ background: theme.main }}
-                          />
-                          <span
-                            className={styles.swatch}
-                            style={{ background: theme.sub }}
-                          />
-                          <span
-                            className={styles.swatch}
-                            style={{ background: theme.text }}
-                          />
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </section>
-            ) : null}
-          </>
-        )}
+                      return (
+                        <button
+                          key={name}
+                          type="button"
+                          onClick={() => setTheme(name)}
+                          className={`${styles.themeButton} ${active ? styles.active : ""}`}
+                        >
+                          <span className={styles.themeName}>
+                            {name.replaceAll("_", " ")}
+                          </span>
+                          <span className={styles.swatches}>
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.bg }}
+                            />
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.main }}
+                            />
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.sub }}
+                            />
+                            <span
+                              className={styles.swatch}
+                              style={{ background: theme.text }}
+                            />
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+              ) : null}
+            </>
+          )}
+        </div>
       </div>
     </main>
   );
