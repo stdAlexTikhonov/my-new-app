@@ -54,11 +54,26 @@
 }
 
 .listWrapper {
+  position: relative;
   flex: 1;
   min-height: 0;
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black 16px,
+    black calc(100% - 16px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black 16px,
+    black calc(100% - 16px),
+    transparent 100%
+  );
 }
 
 .listWrapper::-webkit-scrollbar {

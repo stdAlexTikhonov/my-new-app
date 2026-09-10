@@ -1,3 +1,4 @@
+import { useTheme } from "@/context";
 import styles from "./Footer.module.scss";
 import { ThemeIcon, ContactsIcon, GithubIcon } from "./icons";
 import { useTranslation } from "react-i18next";
@@ -6,6 +7,8 @@ import { Link } from "react-router";
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t } = useTranslation();
+  const { themeName } = useTheme();
+  const currentThemeLabel = themeName.replaceAll("_", " ");
 
   return (
     <footer className={styles.footer}>
@@ -16,7 +19,7 @@ export const Footer = () => {
         <nav className={styles.links}>
           <Link to="theme" className={styles.link}>
             <ThemeIcon />
-            <span className={styles.text}>{t("footer.theme")}</span>
+            <span className={styles.text}>{currentThemeLabel}</span>
           </Link>
           <Link to="contacts" className={styles.link}>
             <ContactsIcon />
