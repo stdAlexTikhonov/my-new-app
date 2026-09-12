@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 150px;
+  width: 170px;
   color: var(--text-color);
   transition: width 0.25s ease;
 }
@@ -85,6 +85,7 @@
   flex-direction: column;
   gap: 16px;
   margin-top: 8px;
+  margin-bottom: 16px;
 }
 
 .group {
