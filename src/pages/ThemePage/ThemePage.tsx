@@ -45,6 +45,7 @@ export const ThemePage = () => {
     <main className={styles.page}>
       <label className={styles.searchField}>
         <input
+          name="search"
           type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
