@@ -229,11 +229,7 @@
 
 // Mobile responsive
 @media (max-width: 768px) {
-  .langText {
-    display: none;
-  }
-
   .langToggle {
-    padding: 6px 10px;
+    display: none;
   }
 }
