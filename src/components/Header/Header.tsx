@@ -64,10 +64,9 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         {/* Бургер-иконка с рефом */}
-        <div ref={burgerRef}>
+        <div ref={burgerRef} className={styles.burgerWrapper}>
           <BurgerIcon isOpen={open} onClick={toggleMenu} />
         </div>
-
         <div className={styles.logo}>
           <span className={styles.logoIcon}>
             <GridIcon size={35} gap={5} radius={15} background="transparent" />
