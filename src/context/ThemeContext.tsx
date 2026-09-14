@@ -39,12 +39,34 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
+const defaultDarkThemeName: ThemeName = "serika_dark";
+const defaultLightThemeName: ThemeName = "sewing_tin_light";
+
 function getInitialThemeName(): ThemeName {
   return getStoredThemeName() ?? defaultThemeName;
 }
 
+function getInitialDarkThemeName(initialThemeName: ThemeName): ThemeName {
+  return isDarkTheme(themes[initialThemeName])
+    ? initialThemeName
+    : defaultDarkThemeName;
+}
+
+function getInitialLightThemeName(initialThemeName: ThemeName): ThemeName {
+  return isDarkTheme(themes[initialThemeName])
+    ? defaultLightThemeName
+    : initialThemeName;
+}
+
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [themeName, setThemeName] = useState<ThemeName>(getInitialThemeName);
+  const initialThemeName = getInitialThemeName();
+  const [themeName, setThemeName] = useState<ThemeName>(initialThemeName);
+  const [darkThemeName, setDarkThemeName] = useState<ThemeName>(() =>
+    getInitialDarkThemeName(initialThemeName),
+  );
+  const [lightThemeName, setLightThemeName] = useState<ThemeName>(() =>
+    getInitialLightThemeName(initialThemeName),
+  );
 
   const theme = useMemo(() => themes[themeName], [themeName]);
   const isDark = useMemo(() => isDarkTheme(theme), [theme]);
@@ -56,11 +78,18 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
   const setTheme = (nextThemeName: ThemeName) => {
     setThemeName(nextThemeName);
+
+    if (isDarkTheme(themes[nextThemeName])) {
+      setDarkThemeName(nextThemeName);
+      return;
+    }
+
+    setLightThemeName(nextThemeName);
   };
 
   const toggleTheme = () => {
     setThemeName((prevThemeName) =>
-      prevThemeName === "serika_dark" ? "sewing_tin_light" : "serika_dark",
+      isDarkTheme(themes[prevThemeName]) ? lightThemeName : darkThemeName,
     );
   };
 
